@@ -9,6 +9,9 @@ function reducer(state, action) {
     case "INIT": {
       return action.payload
     }
+    case "ADD": {
+      return [...state, action.payload]
+    }
     case "UPDATE": {
       const oldTodoIdx = state.findIndex(todo => todo.id === action.payload.id)
       const newState = [...state]

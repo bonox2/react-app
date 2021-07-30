@@ -2,6 +2,16 @@ h1 {
   text-align: center;
   margin-bottom: 20px;
 }
+.add-form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 20px;
+  padding: 20px;
+  border: 2px solid;
+  margin-bottom: 20px;
+  text-align: center;
+}
 .todos {
   display: flex;
   flex-direction: column;
