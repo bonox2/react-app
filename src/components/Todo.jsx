@@ -1,3 +1,4 @@
+import { updateTodo, deleteTodo } from "../api/crud";
 import { updateTodo } from "../api/crud";
 import { dateTimeFormat } from "./../utils/common";
 import useTodos from './../hooks/useTodos';
@@ -14,6 +15,15 @@ export default function Todo({ todo }) {
         alert('Update todo error!')
     }
   }
+  async function removeTodo() {
+    const [, deleteTodoError] = await deleteTodo(todo.id)
+    if (!deleteTodoError) {
+      dispatchTodos({type:'DELETE', payload: todo.id})
+    }
+    else{
+      alert('Todo delete error!')
+    }
+  }
   return (
     <div className={`todo ${done}`}>
       <h2>{todo.title}</h2>
@@ -25,6 +35,11 @@ export default function Todo({ todo }) {
       {!todo.done && (
         <button className="todo__btn" onClick={updateTodoStatus}>
           Done!
+        </button>
+      )}
+      {todo.done && (
+        <button className="todo__btn" onClick={removeTodo}>
+          Delete todo!
         </button>
       )}
     </div>
